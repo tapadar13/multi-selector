@@ -31,13 +31,15 @@ const PickOptions = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <h1 className="mb-6 text-xl font-bold">Tech Stack Picker</h1>
+      <h1 className="mb-6 text-xl font-bold dark:text-white">
+        Tech Stack Picker
+      </h1>
       <div className="relative w-[30rem]" ref={dropdownRef}>
         <div className="mb-2 flex flex-wrap gap-2">
           {selectedOptions.map((option) => (
             <span
               key={option.id}
-              className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+              className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
             >
               <img
                 src={option.icon}
@@ -54,13 +56,15 @@ const PickOptions = () => {
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-100 flex items-center justify-between"
+          className="w-full px-4 py-2 text-left bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-100 dark:focus:ring-gray-500 dark:focus:ring-opacity-50 flex items-center justify-between"
         >
-          <span className="text-gray-700">Choose an option</span>
-          <ChevronDown className="float-right opacity-50" />
+          <span className="text-gray-700 dark:text-gray-300">
+            Choose an option
+          </span>
+          <ChevronDown className="float-right opacity-50 dark:text-gray-300" />
         </button>
         <div
-          className={`absolute top-full left-0 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg transition-transform duration-200 ${
+          className={`absolute top-full left-0 mt-1 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg transition-transform duration-200 ${
             isOpen ? "max-h-[20rem] opacity-100" : "max-h-0 opacity-0"
           } overflow-y-auto max-h-[20rem]`}
         >

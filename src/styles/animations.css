@@ -1,0 +1,25 @@
+@keyframes rotateSun {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes rotateMoon {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.sun-animation {
+  animation: rotateSun 0.5s ease-in-out forwards;
+}
+
+.moon-animation {
+  animation: rotateMoon 0.5s ease-in-out forwards;
+}
