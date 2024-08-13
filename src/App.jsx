@@ -2,7 +2,7 @@ import Pickoptions from "./components/PickOptions";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="bg-gray-50 flex items-start justify-center h-screen p-4">
       <Pickoptions />
     </div>
   );

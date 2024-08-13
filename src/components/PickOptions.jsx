@@ -1,31 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, X } from "lucide-react";
 import OptionItem from "./OptionItem";
-
-const options = [
-  { id: "react", name: "React", icon: "/images/react.svg" },
-  { id: "nextjs", name: "Next.js", icon: "/images/nextjs.svg" },
-  {
-    id: "tanstack-query",
-    name: "Tanstack Query",
-    icon: "/images/react-query.svg",
-  },
-  { id: "docker", name: "Docker", icon: "/images/docker.svg" },
-  { id: "astro", name: "Astro", icon: "/images/astro.svg" },
-  { id: "supabase", name: "Supabase", icon: "/images/supabase.svg" },
-  { id: "hono", name: "Hono", icon: "/images/hono.svg" },
-  { id: "firebase", name: "Firebase", icon: "/images/firebase.svg" },
-  { id: "bunny", name: "Bunny", icon: "/images/bunny-net.svg" },
-  { id: "mongodb", name: "MongoDB", icon: "/images/mongodb.svg" },
-  { id: "bun", name: "Bun", icon: "/images/bun.svg" },
-  { id: "nuxt", name: "Nuxt", icon: "/images/nuxt.svg" },
-  { id: "remix", name: "Remix", icon: "/images/remix.svg" },
-  { id: "kubernetes", name: "Kubernetes", icon: "/images/kubernetes.svg" },
-  { id: "tailwind", name: "Tailwind CSS", icon: "/images/tailwind.svg" },
-  { id: "redis", name: "Redis", icon: "/images/redis.svg" },
-  { id: "redux", name: "Redux", icon: "/images/redux.svg" },
-  { id: "rust", name: "Rust", icon: "/images/rust.svg" },
-];
+import { options } from "../constants/techOptions";
 
 const PickOptions = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,23 +30,28 @@ const PickOptions = () => {
   }, []);
 
   return (
-    <div className="w-80 font-sans" ref={dropdownRef}>
-      <div className="mb-2 flex flex-wrap gap-2">
-        {selectedOptions.map((option) => (
-          <span
-            key={option.id}
-            className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
-          >
-            <img src={option.icon} alt={option.name} className="w-4 h-4 mr-1" />
-            {option.name}
-            <X
-              className="ml-1 h-4 w-4 cursor-pointer"
-              onClick={() => toggleOption(option)}
-            />
-          </span>
-        ))}
-      </div>
-      <div className="relative">
+    <div className="flex flex-col items-center justify-center p-4">
+      <h1 className="mb-6 text-xl font-bold">Tech Stack Picker</h1>
+      <div className="relative w-[30rem]" ref={dropdownRef}>
+        <div className="mb-2 flex flex-wrap gap-2">
+          {selectedOptions.map((option) => (
+            <span
+              key={option.id}
+              className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+            >
+              <img
+                src={option.icon}
+                alt={option.name}
+                className="w-4 h-4 mr-1"
+              />
+              {option.name}
+              <X
+                className="ml-1 h-4 w-4 cursor-pointer"
+                onClick={() => toggleOption(option)}
+              />
+            </span>
+          ))}
+        </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-100 flex items-center justify-between"
@@ -78,8 +59,12 @@ const PickOptions = () => {
           <span className="text-gray-700">Choose an option</span>
           <ChevronDown className="float-right opacity-50" />
         </button>
-        {isOpen && (
-          <ul className="z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto max-h-[20rem]">
+        <div
+          className={`absolute top-full left-0 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg transition-transform duration-200 ${
+            isOpen ? "max-h-[20rem] opacity-100" : "max-h-0 opacity-0"
+          } overflow-y-auto max-h-[20rem]`}
+        >
+          <ul className="w-full">
             {options.map((option) => (
               <OptionItem
                 key={option.id}
@@ -91,7 +76,7 @@ const PickOptions = () => {
               />
             ))}
           </ul>
-        )}
+        </div>
       </div>
     </div>
   );
