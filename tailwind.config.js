@@ -10,6 +10,9 @@ export default {
         "light-bg": "#f7fafc",
         "light-text": "#1a202c",
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
